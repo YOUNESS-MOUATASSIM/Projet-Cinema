@@ -1,0 +1,29 @@
+<body>
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-3">
+                <form class="form-signin" #f="ngForm" (ngSubmit)="sAuthentifier(f.value)">
+                    <div class="form-group">
+                        <h3>
+                            <p>Authentication :</p>
+                        </h3>
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="" ngModel>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" ngModel>
+
+                    </div>
+
+                    <input name="_csrf" type="hidden" value="ebc0fff0-8068-4f8d-a8ee-3afccfcbed10">
+
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                </form>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+</body>
