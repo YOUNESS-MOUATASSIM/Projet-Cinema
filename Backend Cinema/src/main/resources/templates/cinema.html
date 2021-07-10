@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+       xmlns:layout="http//www.traq.net.nz/thymeleaf/layout"
+        layout:decorator="index.html"
+       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../static/cinema.css" >
+<STYLE TYPE="text/css">
+  .clickable {
+    cursor: pointer;
+}
+
+.ticket {
+    margin: 2px;
+    width: 40px;
+}
+</STYLE>
+</head>
+<body>
+   <div layout:fragment="pageContent">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <ul th:if="${villes!=null}" class="list-group">
+                <li th:each="v:${villes}" class="list-group-item clickable">
+                  <a th:text="${v.nom}" 
+                  th:href="@{cinema(idVille=${v.idVille},idCinema=${null})}">
+                  </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">Liste des Cinemas</div>
+                <div class="panel-body">
+                    <ul th:if="${cinemas!=null}" class="nav nav-pills">
+                       <li th:each="c:${cinemas}" class="clickable">
+                          <a th:text="${c.nom}" th:href="@{cinema(idVille=${v.idVille},idCinemas=${c.idCinema})}" ></a>
+                        </li>
+                    </ul>
+                    <div class="row" th:if="${salles!=null}">
+                        <div th:each="s:${salles}">
+                            <div class="col-md-6">
+                                <div class="panel panel-default ">
+                                    <div class="panel-heading"><a th:text="${s.nom}"></a></div>
+                                    <div class="panel-body" >
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <img  class="img-thumbnail">
+                                            </div>
+                                            <div class="col-md-7">
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">Séances :</li>
+                                                    <li  class="list-group-item clickable">
+                                                        {{p.seance.heureDebut}} Prix :{{p.prix|number :'0.00'}}DHS
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+
+                                        <div >
+                                            <div >
+                                                <div class="row" >
+                                                    <button  >
+                                                          {{t.place.numero}}
+                                                     </button>
+                                                </div>
+                                                <div >
+
+                                                    <form >
+                                                        <div class="form-group">
+                                                            <label class="control-label">Nom Client :</label>
+                                                            <input class="form-control" type="text" placeholder="nom Client" name="nomClient" >
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label">Code Paiement :</label>
+                                                            <input class="form-control" type="text" placeholder="Code Paiement" name="codePaiement" >
+                                                        </div>
+                                                        <button type="submit" class="btn btn-success">Payer</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

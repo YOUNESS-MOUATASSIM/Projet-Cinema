@@ -16,13 +16,13 @@ export class AuthenticationComponent implements OnInit {
   ngOnInit(): void {
   }
   public sAuthentifier(form :any){
-    console.log(" gooood "+form);
+    /*console.log(" gooood "+form);
     this.authenticationService.authentifier(form)
     .subscribe(data=>{
      
      
      },err=>{
      console.log(err);
-  })
+  })*/
   }
 }
